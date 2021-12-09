@@ -33,7 +33,7 @@ router.post(["/", "/login"], (req, res, next) => {
         return        
       }      
       if (result[0].password === password) {
-        /* console.log("query result", result[0].cinema); */
+        console.log("query result", result[0].cinema);
         /* res.status(301).redirect("/tracing") */
         res.status(200).json(result[0].cinema,result[0].screen);
         return;
