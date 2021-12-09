@@ -35,7 +35,7 @@ router.post(["/", "/login"], (req, res, next) => {
       if (result[0].password === password) {
         /* console.log("query result", result[0].cinema); */
         /* res.status(301).redirect("/tracing") */
-        res.status(200).json(result[0]);
+        res.status(200).json(result[0].cinema);
         return;
       }
       next(new ErrorHandler(404,"password errata"));
