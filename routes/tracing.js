@@ -6,8 +6,8 @@ const mysql = require("mysql");
 const con = mysql.createPool(dbconfig);
 
 router.get("/tracing", (req, res) => {
-  console.log("tracing get", req.query);
-  res.send(req.query.cinema);
+  
+  res.send("tracing page");
 });
 
 router.delete("/tracing",(req,res,next)=>{
