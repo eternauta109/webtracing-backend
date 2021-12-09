@@ -19,7 +19,7 @@ router.post(["/", "/login"], (req, res, next) => {
  
   
   const sqlquery =
-    "SELECT login.password,login.cinema FROM tracingdb.login WHERE login.username=?;";
+    "SELECT login.password,login.cinema FROM login WHERE login.username=?;";
 
   
   try {
