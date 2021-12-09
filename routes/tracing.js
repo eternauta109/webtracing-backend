@@ -59,10 +59,8 @@ router.post("/tracing", (req, res, next) => {
       }
     );
   } catch (error) {
-    throw new ErrorHandler(
-      404,
-      "errore sulla query POST del tracing: vedi server/tracing.js"
-    );
+    next(new ErrorHandler(404,"errore sulla query POST del tracing: vedi server/tracing.js"));
+    
   }
 });
 
