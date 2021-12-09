@@ -6,7 +6,7 @@ const tracing=require("./routes/tracing");
 const _404=require("./routes/404");
 const appError=require("./middleware/error")
 
-port=process.env.port||3001;
+PORT=process.env.PORT||3001;
 
 app.use(express.json());
 app.use(
@@ -25,5 +25,5 @@ app.use(appError);
 
 
 app.listen(port, () => {
-  console.log(`running on port ${port}`);
+  console.log(`running on port ${PORT}`);
 });
