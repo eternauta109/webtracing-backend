@@ -9,7 +9,7 @@ const con = mysql.createPool(dbconfig);
 router.get(["/", "/login"], (req, res) => {
   
   res.send("login home page");
-  /* console.log(req.body); */
+  console.log(req.body);
 });
 
 router.post(["/", "/login"], (req, res, next) => {
