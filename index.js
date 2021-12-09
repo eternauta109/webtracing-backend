@@ -24,6 +24,6 @@ app.use(_404);
 app.use(appError);
 
 
-app.listen(port, () => {
+app.listen(PORT, () => {
   console.log(`running on port ${PORT}`);
 });
