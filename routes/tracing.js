@@ -11,7 +11,9 @@ router.get("/tracing", (req, res) => {
 });
 
 router.delete("/tracing",(req,res,next)=>{
-  console.log(req.body.codTicket)
+  
+  /* console.log(req.body.codTicket) */
+  
   const sqlquery =
     "DELETE FROM tracing WHERE ticket=?;";
     try {
