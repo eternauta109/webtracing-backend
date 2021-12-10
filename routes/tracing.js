@@ -37,7 +37,7 @@ router.post("/tracing", (req, res, next) => {
   /* console.log("registration", reg.fiscale); */
 
   const sqlquery =
-    "INSERT INTO tracing (cinema,codfisc,ticket,agregate,phone,date) VALUES(?,?,?,?,?,?);";
+    "INSERT INTO tracing (cinema,codfisc,ticket,agregate,phone,date,screen,showtime) VALUES(?,?,?,?,?,?,?,?);";
 
   try {
     con.query(
@@ -49,6 +49,8 @@ router.post("/tracing", (req, res, next) => {
         reg.nameClient,
         reg.numberPhone,
         reg.date,
+        reg.screen,
+        reg.time
       ],
       (err, result, fields) => {
         if (err) next(new ErrorHandler(404,"errore db nel file tracing"));
