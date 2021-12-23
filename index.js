@@ -3,6 +3,7 @@ const app = express();
 const cors = require("cors");
 const login=require("./routes/login");
 const tracing=require("./routes/tracing");
+const find=require("./routes/find")
 const _404=require("./routes/404");
 const appError=require("./middleware/error")
 
@@ -20,6 +21,7 @@ app.use(cors());
 
 app.use(login);
 app.use(tracing);
+app.use(find);
 app.use(_404);
 app.use(appError);
 
