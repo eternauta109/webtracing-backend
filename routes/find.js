@@ -15,7 +15,7 @@ router.post("/find", (req, res, next) => {
   const toFind = req.body.toFind;
   /* console.log("tofind", toFind); */
   const sqlquery =
-    "SELECT tracing.codfisc,tracing.agregate,tracing.phone,tracing.screen, tracing.showtime FROM tracing WHERE tracing.ticket=?;";
+    "SELECT tracing.codfisc,tracing.ticket,tracing.agregate,tracing.phone,tracing.screen, tracing.showtime FROM tracing WHERE tracing.ticket=?;";
   /* console.log("query find", sqlquery); */
   try {
     con.query(sqlquery, [toFind], (err, result, fields) => {
