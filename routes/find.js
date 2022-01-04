@@ -15,12 +15,22 @@ findElements = (elToFind) => {
   /* console.log("elToFind", elToFind); */
   pool = mysql.createPool(dbconfig);
   const sqlquery =
+<<<<<<< HEAD
     "SELECT tracing.codfisc,tracing.agregate,tracing.phone,tracing.screen, tracing.showtime FROM tracing WHERE tracing.ticket=?;";
   return new Promise((resolve, reject) => {
     pool.query(sqlquery, elToFind, (error, elements) => {
       pool.end();
       if (error) {
         return reject(error);
+=======
+    "SELECT tracing.codfisc,tracing.ticket,tracing.agregate,tracing.phone,tracing.screen, tracing.showtime FROM tracing WHERE tracing.ticket=?;";
+  /* console.log("query find", sqlquery); */
+  try {
+    con.query(sqlquery, [toFind], (err, result, fields) => {
+      if (err) {
+        next(new ErrorHandler(0, err));
+        return;
+>>>>>>> 12e4c10a0bc6af094c9e7be248f01a0d8bc5d6dc
       }
       return resolve(elements);
     });
@@ -53,3 +63,13 @@ router.post("/find", async (req, res, next) => {
 module.exports = router;
 
 
+<<<<<<< HEAD
+=======
+/* {
+    codfisc: result[0].codfisc,
+    agregate: result[0].agregate,
+    phone: result[0].phone,
+    screen: result[0].screen,
+    showtime: result[0].showtime,
+  } */
+>>>>>>> 12e4c10a0bc6af094c9e7be248f01a0d8bc5d6dc
