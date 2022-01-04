@@ -10,7 +10,7 @@ router.get(["/", "/login"], (req, res) => {
 });
 
 getAllElements = (username) => {
-  /* console.log("username", username); */
+  console.log("username", username);
   pool=mysql.createPool(db)
   const sqlquery =
     "SELECT login.password,login.cinema,login.screen FROM login WHERE login.username=?;";
