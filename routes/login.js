@@ -10,7 +10,7 @@ router.get(["/", "/login"], (req, res) => {
 });
 
 getAllElements = (username) => {
-  console.log("username", username);
+  /* console.log("username", username); */
   pool=mysql.createPool(db)
   const sqlquery =
     "SELECT login.password,login.cinema,login.screen FROM login WHERE login.username=?;";
@@ -24,6 +24,37 @@ getAllElements = (username) => {
     });
   });
 };
+
+const deleteOldElements = (dateToDelete) => {
+  /* console.log("date to delete", dateToDelete); */
+  const pool = mysql.createPool(db);
+  const sqlquery = "DELETE FROM tracing WHERE date<?";
+  return new Promise((resolve, reject) => {
+    pool.query(sqlquery, dateToDelete, (error, elements) => {
+      pool.end();
+      if (error) {
+        return reject(error);
+      }
+      return resolve(elements);
+    });
+  });
+};
+
+router.delete(["/", "/login"], async (req, res, next) => {
+  /* console.log("req body", req.body.dateToDelete); */
+  try {
+    const element = await deleteOldElements(req.body.dateToDelete);
+    /* console.log("selete element", element); */
+    res.status(200).json(element);
+  } catch (error) {
+    next(
+      new ErrorHandler(
+        404,
+        `database problematico: vedi server/login.js delete  ${error}`
+      )
+    );
+  }
+});
 
 router.post(["/", "/login"], async (req, res, next) => {
   const username = req.body.username;
